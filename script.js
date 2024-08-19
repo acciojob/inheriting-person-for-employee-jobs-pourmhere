@@ -1,20 +1,24 @@
-function Person(name, age) {
-	this.name:name;
-		this.age:age;
-
-	this.greet()=function(){
-		console.log(`Hello, my name is ${this.name}, I am ${this.age} years old.`)
+class Person {
+	constructor(name, age) {
+		this.n = name;
+		this.a = age;
 	}
-
-function Employee(name, age, jobTitle) {
-	this.jobTitle:jobTitle;
-
-	this.jobGreet()=function(){
-		console.log(`Hello, my name is ${this.name}, I am ${this.age} years old, and my job title is ${this.jobTitle}`)
-	};
+	greet() {
+		console.log(`Hello, my name is ${this.n} and I am ${this.a} years old.`);
+	}
 }
-Employee.prototype = Object.create(Person.prototype);
-Employee.prototype.constructor = Employee;
+
+class Employee extends Person {
+	constructor(name, age, jobTitle) {
+		super(name, age);
+        this.j = jobTitle;
+	}
+	jobGreet() {
+		console.log(`Hello, my name is ${this.n}, I am ${this.a} years old, and my job title is ${this.j}.`);
+	}
+}
+
+
 // Do not change code below this line
 window.Person = Person;
 window.Employee = Employee;
